@@ -1,3 +1,5 @@
 .tile {
-  border: 5px solid black;
+  border: 1px solid black;
+  max-width: 16px;
+  max-height: 16px;
 }
