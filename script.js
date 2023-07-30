@@ -19,3 +19,11 @@ for (let i = 0; i < gridDimension; i++) {
 
   container.appendChild(row);
 }
+
+const allTiles = document.querySelectorAll(".tile");
+
+allTiles.forEach((tiles) =>
+  tiles.addEventListener("mouseover", () => {
+    tiles.setAttribute("style", "background-color: black;");
+  })
+);
