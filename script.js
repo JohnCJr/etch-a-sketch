@@ -24,21 +24,25 @@ function setUserDimension() {
   return gridCount;
 }
 
-// loops to create row divs that will contain the tiles
-for (let i = 0; i < gridDimension; i++) {
-  const row = document.createElement("div"); // creates new div
-  row.setAttribute("class", "row"); // gives the div a class name of row
+function setGrid(currentGrid) {
+  // loops to create row divs that will contain the tiles
+  for (let i = 0; i < currentGrid; i++) {
+    const row = document.createElement("div"); // creates new div
+    row.setAttribute("class", "row"); // gives the div a class name of row
 
-  tile = ""; // resets the tile content
+    tile = ""; // resets the tile content
 
-  // loop will fill tile content with the specified number of divs
-  for (let j = 0; j < gridDimension; j++) {
-    tile += `<div class = "tile num${j + 1}"></div>`;
+    // loop will fill tile content with the specified number of divs
+    for (let j = 0; j < currentGrid; j++) {
+      tile += `<div class = "tile num${j + 1}"></div>`;
+    }
+    row.innerHTML = tile;
+
+    container.appendChild(row);
   }
-  row.innerHTML = tile;
-
-  container.appendChild(row);
 }
+
+setGrid(gridDimension);
 
 const allTiles = document.querySelectorAll(".tile");
 
