@@ -50,7 +50,7 @@ function clearGrid() {
   });
 }
 
-function setTileListener(currentTiles) {
+function setTileEvent(currentTiles) {
   currentTiles.forEach((tiles) =>
     tiles.addEventListener("mouseover", () => {
       tiles.setAttribute("style", "background-color: black;");
@@ -73,5 +73,5 @@ setGridButton.addEventListener("click", () => {
 
   allTiles = document.querySelectorAll(".tile");
 
-  setTileListener(allTiles);
+  setTileEvent(allTiles);
 });
