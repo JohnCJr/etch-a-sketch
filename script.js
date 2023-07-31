@@ -42,12 +42,36 @@ function setGrid(currentGrid) {
   }
 }
 
+function clearGrid() {
+  let previousRows = document.querySelectorAll(".row");
+  console.log(previousRows);
+  previousRows.forEach((row) => {
+    row.remove();
+  });
+}
+
+function setTileListener(currentTiles) {
+  currentTiles.forEach((tiles) =>
+    tiles.addEventListener("mouseover", () => {
+      tiles.setAttribute("style", "background-color: black;");
+    })
+  );
+}
+
 setGrid(gridDimension);
 
-const allTiles = document.querySelectorAll(".tile");
+let allTiles = document.querySelectorAll(".tile");
+const setGridButton = document.querySelector("button");
 
-allTiles.forEach((tiles) =>
-  tiles.addEventListener("mouseover", () => {
-    tiles.setAttribute("style", "background-color: black;");
-  })
-);
+setTileEvent(allTiles);
+
+setGridButton.addEventListener("click", () => {
+  clearGrid();
+
+  gridDimension = setUserDimension();
+  setGrid(gridDimension);
+
+  allTiles = document.querySelectorAll(".tile");
+
+  setTileListener(allTiles);
+});
