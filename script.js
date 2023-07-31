@@ -34,7 +34,7 @@ function setGrid(currentGrid) {
 
     // loop will fill tile content with the specified number of divs
     for (let j = 0; j < currentGrid; j++) {
-      tile += `<div class = "tile num${j + 1}"></div>`;
+      tile += `<div class = "tile"></div>`;
     }
     row.innerHTML = tile;
 
