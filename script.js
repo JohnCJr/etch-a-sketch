@@ -53,9 +53,24 @@ function clearGrid() {
 function setTileEvent(currentTiles) {
   currentTiles.forEach((tiles) =>
     tiles.addEventListener("mouseover", () => {
-      tiles.setAttribute("style", "background-color: black;");
+      if (!tiles.classList.contains("changed")) {
+        tiles.classList.add("changed");
+        tiles.setAttribute(
+          "style",
+          `background-color: ${getRandomRgbColor()};` // uses function to get assign a random rgb color
+        );
+      }
     })
   );
+}
+
+// returns a string with a rgb value between 0 and 255
+function getRandomRgbColor() {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 setGrid(gridDimension);
