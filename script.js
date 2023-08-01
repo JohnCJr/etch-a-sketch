@@ -59,6 +59,7 @@ function setTileEvent(currentTiles) {
           "style",
           `background-color: ${getRandomRgbColor()};` // uses function to get assign a random rgb color
         );
+        console.log(tiles.style.backgroundColor);
       }
     })
   );
@@ -71,6 +72,15 @@ function getRandomRgbColor() {
   let b = Math.floor(Math.random() * 256);
 
   return `rgb(${r}, ${g}, ${b})`;
+}
+
+function darkenRgbColor(tile) {
+  // gets the rgb value of the tile
+  // subtract 10% of the current value
+  // return the rgb value
+  let newR = r - r * 0.1 < 0 ? r : r - r * 0.1;
+  let newG = g - g * 0.1 < 0 ? g : g - g * 0.1;
+  let newB = b - b * 0.1 < 0 ? b : b - b * 0.1;
 }
 
 setGrid(gridDimension);
