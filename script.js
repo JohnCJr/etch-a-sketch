@@ -5,21 +5,25 @@ let gridDimension = 50;
 let tile = "";
 
 function setUserDimension() {
-  let gridCount = prompt(
-    "Enter the number squares per side of the grid. Number cannot be less than 1 or greater than 100."
-  );
+  let gridCount = "";
 
-  if (gridCount !== null) {
-    gridCount = Number(gridCount);
-    while (gridCount < 1 || gridCount > 100 || !Number.isInteger(gridCount)) {
-      alert(
-        "Invalid input. Value must be a whole number between 1 and 100. Try again"
-      );
-      gridCount = Number(
-        prompt(
-          "Enter the number squares per side of the grid. Number cannot be less than 1 or greater than 100."
-        )
-      );
+  while (
+    gridCount < 1 ||
+    gridCount > 100 ||
+    !Number.isInteger(Number(gridCount))
+  ) {
+    gridCount = prompt(
+      "Enter the number squares per side of the grid. Number cannot be less than 1 or greater than 100."
+    );
+    if (gridCount === null) {
+      break;
+    }
+    if (
+      gridCount < 1 ||
+      gridCount > 100 ||
+      (!Number.isInteger(Number(gridCount)) && gridCount !== null)
+    ) {
+      alert("invalid input. Please try again.");
     }
   }
   return gridCount;
@@ -104,6 +108,8 @@ setTileEvent(allTiles);
 
 setGridButton.addEventListener("click", () => {
   gridDimension = setUserDimension();
+
+  console.log(gridDimension);
 
   // won't trigger functions to clear adn create new grid
   if (gridDimension !== null) {
